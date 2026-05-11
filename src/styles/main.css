@@ -1,0 +1,109 @@
+/* ============================================
+   ScrapChaos - Main Stylesheet
+   ============================================ */
+
+/* --- Material Symbols (Google Icons) --- */
+.material-symbols-outlined {
+  font-family: 'Material Symbols Outlined';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
+}
+
+/* --- Body dot-grid background --- */
+body {
+  background-image: radial-gradient(#cbc3d7 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* --- Washi Tape base --- */
+.washi-tape {
+  opacity: 0.8;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+/* Washi tape shape variants */
+.washi-shape-1 {
+  clip-path: polygon(5% 0%, 100% 5%, 95% 100%, 0% 95%);
+}
+
+.washi-shape-2 {
+  clip-path: polygon(0% 10%, 95% 0%, 100% 90%, 5% 100%);
+}
+
+.washi-shape-3 {
+  clip-path: polygon(5% 5%, 100% 0%, 95% 95%, 0% 100%);
+}
+
+.washi-shape-4 {
+  clip-path: polygon(5% 0%, 95% 10%, 100% 90%, 0% 100%);
+}
+
+.washi-shape-5 {
+  clip-path: polygon(0 15%, 100% 0, 95% 100%, 5% 85%);
+}
+
+.washi-shape-6 {
+  clip-path: polygon(10% 0, 100% 0, 90% 100%, 0 100%);
+}
+
+/* --- Neo-brutalist shadow presets --- */
+.shadow-brutal-sm {
+  box-shadow: 2px 2px 0px 0px rgba(31, 41, 55, 1);
+}
+
+.shadow-brutal {
+  box-shadow: 4px 4px 0px 0px rgba(31, 41, 55, 1);
+}
+
+.shadow-brutal-lg {
+  box-shadow: 6px 6px 0px 0px rgba(31, 41, 55, 1);
+}
+
+.shadow-brutal-xl {
+  box-shadow: 8px 8px 0px 0px rgba(31, 41, 55, 1);
+}
+
+/* --- Canvas scrap items (shared) --- */
+.scrap-item {
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.scrap-item:hover {
+  transform: scale(1.05);
+}
+
+/* --- Sticker vinyl effect --- */
+.sticker-vinyl {
+  position: relative;
+  overflow: hidden;
+}
+
+.sticker-vinyl::after {
+  content: '';
+  position: absolute;
+  inset: 4px;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  border-radius: 0.75rem;
+  pointer-events: none;
+}
+
+/* --- Badge shiny highlight --- */
+.badge-shiny::after {
+  content: '';
+  position: absolute;
+  inset: 8px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 9999px;
+  pointer-events: none;
+}

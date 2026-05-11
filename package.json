@@ -1,0 +1,22 @@
+{
+  "name": "scrapchaos",
+  "version": "1.0.0",
+  "description": "ScrapChaos - Infinite Canvas for your chaotic creative mind",
+  "main": "index.html",
+  "scripts": {
+    "dev": "npx live-server --port=3000",
+    "build": "npx tailwindcss -i ./src/styles/main.css -o ./dist/styles/output.css --minify"
+  },
+  "keywords": [
+    "canvas",
+    "scrapbook",
+    "creative",
+    "neo-brutalist"
+  ],
+  "author": "Vo Pham Gia Kiet",
+  "license": "MIT",
+  "devDependencies": {
+    "tailwindcss": "^3.4.0",
+    "live-server": "^1.2.2"
+  }
+}

@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="ScrapChaos - Infinite Canvas for your chaotic creative mind" />
+  <title>Infinite Canvas - ScrapChaos</title>
+
+  <!-- Tailwind CSS (CDN) -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Syne:wght@800&family=JetBrains+Mono:wght@500;700&family=Bricolage+Grotesque:wght@400&display=swap"
+    rel="stylesheet"
+  />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Tailwind Config -->
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "inverse-surface":           "#322f39",
+            "on-primary":                "#ffffff",
+            "error":                     "#ba1a1a",
+            "secondary-fixed":           "#ceee93",
+            "on-secondary-container":    "#536d22",
+            "primary-container":         "#8455ef",
+            "secondary-fixed-dim":       "#b3d17a",
+            "background":                "#fef7ff",
+            "tertiary-fixed-dim":        "#bdc7d9",
+            "secondary-container":       "#ceee93",
+            "on-primary-fixed-variant":  "#5516be",
+            "error-container":           "#ffdad6",
+            "surface-bright":            "#fef7ff",
+            "on-tertiary-fixed":         "#121c2a",
+            "surface-container-lowest":  "#ffffff",
+            "surface-container-high":    "#ede5f3",
+            "inverse-on-surface":        "#f5eefb",
+            "tertiary-container":        "#6b7586",
+            "on-surface":                "#1d1a23",
+            "on-primary-fixed":          "#23005c",
+            "on-secondary-fixed-variant":"#364e03",
+            "primary-fixed":             "#e9ddff",
+            "surface":                   "#fef7ff",
+            "on-surface-variant":        "#494454",
+            "on-primary-container":      "#fffbff",
+            "primary":                   "#6b38d4",
+            "outline":                   "#7b7486",
+            "surface-variant":           "#e7e0ed",
+            "on-secondary":              "#ffffff",
+            "on-error-container":        "#93000a",
+            "primary-fixed-dim":         "#d0bcff",
+            "inverse-primary":           "#d0bcff",
+            "surface-tint":              "#6d3bd7",
+            "surface-dim":               "#ded7e4",
+            "surface-container-highest": "#e7e0ed",
+            "surface-container":         "#f3ebf8",
+            "secondary":                 "#4d661c",
+            "outline-variant":           "#cbc3d7",
+            "on-tertiary-fixed-variant": "#3d4756",
+            "on-error":                  "#ffffff",
+            "tertiary-fixed":            "#d9e3f6",
+            "on-background":             "#1d1a23",
+            "surface-container-low":     "#f8f1fe",
+            "on-tertiary":               "#ffffff",
+            "on-secondary-fixed":        "#131f00",
+            "tertiary":                  "#525d6c",
+            "on-tertiary-container":     "#fdfcff"
+          },
+          borderRadius: {
+            DEFAULT: "0.25rem",
+            lg:      "0.5rem",
+            xl:      "0.75rem",
+            full:    "9999px"
+          },
+          spacing: {
+            "gutter":       "16px",
+            "margin-page":  "20px",
+            "unit":         "4px",
+            "stack-overlap":"-12px"
+          },
+          fontFamily: {
+            "headline-lg":        ["Syne"],
+            "headline-lg-mobile": ["Syne"],
+            "technical-xs":       ["JetBrains Mono"],
+            "technical-sm":       ["JetBrains Mono"],
+            "headline-xl":        ["Syne"],
+            "body-md":            ["Bricolage Grotesque"]
+          },
+          fontSize: {
+            "headline-lg":        ["32px", { lineHeight: "1.2",  fontWeight: "800" }],
+            "headline-lg-mobile": ["28px", { lineHeight: "1.2",  fontWeight: "800" }],
+            "technical-xs":       ["12px", { lineHeight: "1.2",  fontWeight: "700" }],
+            "technical-sm":       ["14px", { lineHeight: "1.4",  letterSpacing: "0.05em", fontWeight: "500" }],
+            "headline-xl":        ["48px", { lineHeight: "1.1",  letterSpacing: "-0.02em", fontWeight: "800" }],
+            "body-md":            ["18px", { lineHeight: "1.5",  fontWeight: "400" }]
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="src/styles/main.css" />
+</head>
+
+<body class="bg-surface text-on-surface overflow-hidden min-h-screen relative font-body-md text-body-md">
+
+  <!-- ============================================================
+       TOP APP BAR
+  ============================================================ -->
+  <header class="fixed top-0 left-0 w-full z-50 flex justify-between items-start pt-6 px-margin-page bg-transparent">
+
+    <!-- Logo -->
+    <div class="font-headline-xl text-headline-xl -rotate-2 bg-secondary-fixed text-on-secondary-fixed-variant px-4 py-1 border-4 border-inverse-surface shadow-brutal-xl">
+      ScrapChaos
+    </div>
+
+    <!-- Header Actions -->
+    <div class="flex gap-4">
+      <button
+        aria-label="Toggle lock"
+        class="bg-surface border-4 border-inverse-surface shadow-brutal p-2 hover:rotate-2 hover:scale-110 transition-transform active:translate-x-1 active:translate-y-1 active:shadow-none"
+      >
+        <span class="material-symbols-outlined text-primary">lock_open</span>
+      </button>
+      <button
+        aria-label="Open settings"
+        class="bg-surface border-4 border-inverse-surface shadow-brutal p-2 hover:rotate-2 hover:scale-110 transition-transform active:translate-x-1 active:translate-y-1 active:shadow-none"
+      >
+        <span class="material-symbols-outlined text-primary">settings</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ============================================================
+       SIDE NAV BAR — Toolbox (Desktop only)
+  ============================================================ -->
+  <nav
+    aria-label="Toolbox"
+    class="hidden md:flex fixed left-4 top-24 flex-col gap-4 py-6 bg-surface-container-highest h-[819px] w-20 rounded-xl border-4 border-inverse-surface shadow-brutal-xl z-40 items-center justify-start"
+  >
+    <!-- User Avatar -->
+    <div class="mb-4">
+      <img
+        alt="User personality avatar"
+        class="w-12 h-12 rounded-full border-2 border-inverse-surface shadow-brutal-sm -rotate-3"
+        src="https://lh3.googleusercontent.com/aida-public/AB6AXuCFeCXPMfoOJIfFbkBunz9cCoMnXQ95HNBC8SUCPMaNgOu30oqZw1rfIXZkxxrIWvHf5ikuuoNWilJ_L3WBPOZcamYCyQ23wNOW_ekGW2XTZD3f7ofBxLF5B6G2gY2hFAhkq85B6q6mF9G12pUClyrfAcy2JCFX-JacDtAEyhKe3ucn-8Mch9Edfxx1yeHU08ei6oGAhg8b5Pd8Ty-AouUKiZtnd1kjpcKTLZnUY7k9lIh6bJUnDb4nZMgw4oEd-Aj4hSWtvBs3rxw"
+      />
+    </div>
+
+    <!-- Tools Button (active) -->
+    <button
+      aria-label="Tools"
+      class="bg-secondary-fixed text-on-secondary-fixed-variant rotate-3 p-3 border-2 border-inverse-surface shadow-brutal flex flex-col items-center gap-1 active:translate-x-1 active:shadow-none hover:bg-primary-fixed hover:text-on-primary-fixed transition-colors"
+    >
+      <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">construction</span>
+      <span class="font-technical-xs text-technical-xs sr-only">Tools</span>
+    </button>
+
+    <!-- Stickers Button -->
+    <button
+      aria-label="Stickers"
+      class="bg-surface text-on-surface border-2 border-inverse-surface -rotate-1 shadow-brutal p-3 flex flex-col items-center gap-1 active:translate-x-1 active:shadow-none hover:bg-primary-fixed hover:text-on-primary-fixed transition-colors hover:rotate-2"
+    >
+      <span class="material-symbols-outlined">category</span>
+      <span class="font-technical-xs text-technical-xs sr-only">Stickers</span>
+    </button>
+
+    <!-- Tape Button -->
+    <button
+      aria-label="Tape"
+      class="bg-surface text-on-surface border-2 border-inverse-surface rotate-1 shadow-brutal p-3 flex flex-col items-center gap-1 active:translate-x-1 active:shadow-none hover:bg-primary-fixed hover:text-on-primary-fixed transition-colors hover:-rotate-2"
+    >
+      <span class="material-symbols-outlined">strikethrough_s</span>
+      <span class="font-technical-xs text-technical-xs sr-only">Tape</span>
+    </button>
+
+    <!-- Badges Button -->
+    <button
+      aria-label="Badges"
+      class="bg-surface text-on-surface border-2 border-inverse-surface -rotate-2 shadow-brutal p-3 flex flex-col items-center gap-1 active:translate-x-1 active:shadow-none hover:bg-primary-fixed hover:text-on-primary-fixed transition-colors hover:rotate-3"
+    >
+      <span class="material-symbols-outlined">stars</span>
+      <span class="font-technical-xs text-technical-xs sr-only">Badges</span>
+    </button>
+  </nav>
+
+  <!-- ============================================================
+       BOTTOM NAV BAR (Mobile only)
+  ============================================================ -->
+  <nav
+    aria-label="Main navigation"
+    class="md:hidden fixed bottom-0 w-full z-50 flex justify-center items-center gap-6 px-4 pb-8 bg-transparent"
+  >
+    <button
+      aria-label="Dump"
+      class="bg-surface text-on-surface border-2 border-inverse-surface -rotate-1 shadow-brutal p-3 flex flex-col items-center gap-1 hover:-rotate-6 hover:scale-125 transition-transform active:translate-y-1 active:shadow-none"
+    >
+      <span class="material-symbols-outlined">auto_awesome_motion</span>
+      <span class="font-technical-sm text-technical-sm">Dump</span>
+    </button>
+
+    <button
+      aria-label="Draw"
+      class="bg-primary-container text-on-primary-container border-2 border-inverse-surface rotate-2 scale-110 shadow-brutal p-3 flex flex-col items-center gap-1 hover:-rotate-6 hover:scale-125 transition-transform active:translate-y-1 active:shadow-none"
+    >
+      <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">draw</span>
+      <span class="font-technical-sm text-technical-sm">Draw</span>
+    </button>
+
+    <button
+      aria-label="Add"
+      class="bg-surface text-on-surface border-2 border-inverse-surface rotate-1 shadow-brutal p-3 flex flex-col items-center gap-1 hover:-rotate-6 hover:scale-125 transition-transform active:translate-y-1 active:shadow-none"
+    >
+      <span class="material-symbols-outlined">add_circle</span>
+      <span class="font-technical-sm text-technical-sm">Add</span>
+    </button>
+
+    <button
+      aria-label="Niche"
+      class="bg-surface text-on-surface border-2 border-inverse-surface -rotate-2 shadow-brutal p-3 flex flex-col items-center gap-1 hover:-rotate-6 hover:scale-125 transition-transform active:translate-y-1 active:shadow-none"
+    >
+      <span class="material-symbols-outlined">local_activity</span>
+      <span class="font-technical-sm text-technical-sm">Niche</span>
+    </button>
+
+    <button
+      aria-label="Soul"
+      class="bg-surface text-on-surface border-2 border-inverse-surface rotate-3 shadow-brutal p-3 flex flex-col items-center gap-1 hover:-rotate-6 hover:scale-125 transition-transform active:translate-y-1 active:shadow-none"
+    >
+      <span class="material-symbols-outlined">face_6</span>
+      <span class="font-technical-sm text-technical-sm">Soul</span>
+    </button>
+  </nav>
+
+  <!-- ============================================================
+       INFINITE CANVAS
+  ============================================================ -->
+  <main
+    id="canvas"
+    aria-label="Infinite canvas"
+    class="w-full h-full absolute inset-0 pt-32 pb-32 md:pl-32 pr-4 overflow-x-hidden overflow-y-auto"
+  >
+
+    <!-- ── Polaroid Image #1 ── -->
+    <div
+      class="scrap-item absolute top-[10%] left-[20%] w-64 bg-surface p-4 border-4 border-inverse-surface shadow-brutal-xl rotate-3 hover:rotate-1 hover:scale-105 z-10"
+    >
+      <!-- Washi Tape -->
+      <div class="washi-tape washi-shape-1 absolute -top-3 left-1/2 -translate-x-1/2 w-24 h-6 bg-primary rotate-[-4deg] transform skew-x-12"></div>
+
+      <div class="w-full h-56 bg-surface-container-high border-2 border-inverse-surface mb-4 overflow-hidden">
+        <img
+          alt="Abstract chaotic art piece — colorful neon splashes"
+          class="w-full h-full object-cover"
+          src="https://lh3.googleusercontent.com/aida-public/AB6AXuDiw1M8aOoNr1lYRIzZ6XjO-NAI_CyBBSRWns1ZklwG5QaTnSuCwnnjjaDxN1qEvp5yIyaSsqCzEFiutVTBXNwP2cwqBdUEv5tYIHHEH4C0mg_heainqJLVIPUbUnJoRs203tPkcwe_qlQxSv0UEPVnIw4Ku0R3pDUYJG5qzR_75wufp6CgT-nRv0jcCTP1Oe3J0TZQycuv-e4xioVawKbkAVuhdvFokWJOntPQdCedGiLNn-OpJdyyw74cPy9H3OzWyjaikLsTfqA"
+        />
+      </div>
+      <p class="font-technical-sm text-technical-sm text-center text-on-surface-variant uppercase tracking-widest">
+        mood_board_01
+      </p>
+    </div>
+
+    <!-- ── Sticky Note #1 (Green) ── -->
+    <div
+      class="scrap-item absolute top-[40%] left-[50%] w-48 h-48 bg-secondary-fixed p-6 border-4 border-inverse-surface shadow-brutal-xl -rotate-6 hover:-rotate-2 hover:scale-105 z-20"
+    >
+      <!-- Washi Tape -->
+      <div class="washi-tape washi-shape-2 absolute -top-4 right-4 w-16 h-5 bg-[#ff00ff] rotate-[15deg] transform skew-x-[-10deg]"></div>
+      <p class="font-headline-lg-mobile text-headline-lg-mobile text-on-secondary-fixed-variant leading-tight">
+        Need more stickers!!!
+      </p>
+    </div>
+
+    <!-- ── Niche Fire Badge ── -->
+    <div
+      class="scrap-item absolute top-[20%] right-[15%] w-32 h-32 bg-primary-container rounded-full border-4 border-inverse-surface shadow-brutal-xl flex items-center justify-center rotate-12 hover:rotate-[24deg] hover:scale-110 z-10 group"
+    >
+      <span class="material-symbols-outlined text-on-primary-container text-[64px] group-hover:scale-110 transition-transform">
+        local_fire_department
+      </span>
+      <!-- Tape scrap -->
+      <div class="washi-shape-6 absolute -bottom-2 -left-2 w-12 h-4 bg-tertiary-container rotate-[45deg]"></div>
+    </div>
+
+    <!-- ── Doodle / Scribble ── -->
+    <div
+      aria-hidden="true"
+      class="absolute top-[60%] left-[10%] w-40 h-20 border-t-4 border-inverse-surface border-dashed rounded-full -rotate-[15deg] opacity-50 z-0"
+    ></div>
+
+    <!-- ── Polaroid Image #2 ── -->
+    <div
+      class="scrap-item absolute bottom-[20%] right-[30%] w-72 bg-surface p-3 border-4 border-inverse-surface shadow-brutal-xl -rotate-2 hover:rotate-1 hover:scale-105 z-30"
+    >
+      <!-- Washi tape top-left (over photo) -->
+      <div class="washi-tape washi-shape-4 absolute -top-4 -left-4 w-24 h-8 bg-primary/60 rotate-[35deg] transform skew-x-12 z-10"></div>
+
+      <div class="w-full h-48 bg-surface-container-high border-2 border-inverse-surface overflow-hidden">
+        <img
+          alt="Neon CHAOS sign on a dark brick wall"
+          class="w-full h-full object-cover"
+          src="https://lh3.googleusercontent.com/aida-public/AB6AXuCUKMEr1THb702V7L_gu_jLZBUDDrBx1UPN-rVcR8JIJcPWet473z_IQyJM1XpSxiSSb_yw1MCIjyDtEFhXbtwqsW9W46rlGlSBJT5ImwMF6pvNX2NJYLUg-cwoJD_4z98-KRKG-jSUTV3Nu0v_Aib0oqDUi7rnt5_gQkReLsOBmmLDHmSYEAwWlBuW1z8ZfFgEUUFJETWY0Pnee8Tj-vdPd8_U7b_f1L5aPZEi4FbDhA01lVMyUzZM7Bleud4k0T3DNR9wtUUHAis"
+        />
+      </div>
+
+      <!-- Washi tape bottom-right -->
+      <div class="washi-tape washi-shape-3 absolute -bottom-3 right-8 w-20 h-6 bg-error rotate-[8deg] transform skew-x-[-15deg]"></div>
+    </div>
+
+    <!-- ── Vinyl Sticker Button ── -->
+    <button
+      class="sticker-vinyl absolute top-[70%] left-[40%] bg-[#00ffcc] text-inverse-surface font-headline-lg text-headline-lg px-6 py-3 rounded-xl border-4 border-inverse-surface shadow-brutal rotate-[8deg] hover:rotate-[12deg] hover:scale-110 active:translate-y-1 active:translate-x-1 active:shadow-none transition-all z-40"
+    >
+      VIBE CHECK
+    </button>
+
+    <!-- ── Main Character Energy Badge ── -->
+    <div
+      class="scrap-item badge-shiny absolute top-[50%] right-[10%] w-40 h-40 bg-[#ffff00] rounded-full border-4 border-inverse-surface shadow-brutal-xl flex flex-col items-center justify-center -rotate-12 hover:rotate-0 hover:scale-110 z-20 group"
+    >
+      <span class="material-symbols-outlined text-inverse-surface text-[48px] group-hover:scale-110 transition-transform">
+        workspace_premium
+      </span>
+      <p class="font-technical-xs text-technical-xs text-center px-4 leading-tight text-inverse-surface">
+        MAIN CHARACTER ENERGY
+      </p>
+    </div>
+
+    <!-- ── Sticky Note #2 (Pink) ── -->
+    <div
+      class="scrap-item absolute bottom-[10%] left-[25%] w-56 h-56 bg-[#ff00ff] p-6 border-4 border-inverse-surface shadow-brutal-xl -rotate-3 hover:-rotate-1 hover:scale-105 z-20"
+    >
+      <!-- Washi Tape -->
+      <div class="washi-tape washi-shape-5 absolute -top-3 left-4 w-20 h-6 bg-secondary-fixed rotate-[-10deg]"></div>
+      <p class="font-headline-lg-mobile text-headline-lg-mobile text-white leading-tight drop-shadow-md">
+        Don't forget to dump your brain here!!!
+      </p>
+    </div>
+
+  </main>
+
+  <!-- ============================================================
+       FAB — Floating Action Button
+  ============================================================ -->
+  <button
+    id="fab-add"
+    aria-label="Add new scrap"
+    class="fixed bottom-8 right-8 w-16 h-16 bg-[#00ffcc] text-inverse-surface border-4 border-inverse-surface shadow-brutal-lg rounded-full flex items-center justify-center hover:scale-110 active:translate-x-1 active:translate-y-1 active:shadow-none transition-all z-[60] group"
+  >
+    <span class="material-symbols-outlined text-[40px] font-bold group-hover:rotate-90 transition-transform">add</span>
+  </button>
+
+  <!-- Custom JS -->
+  <script src="src/scripts/main.js"></script>
+
+</body>
+</html>
