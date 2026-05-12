@@ -75,12 +75,29 @@ body {
 
 /* --- Canvas scrap items (shared) --- */
 .scrap-item {
-  transition: all 0.3s ease;
-  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: none; /* Ngăn browser xử lý touch mặc định */
 }
 
 .scrap-item:hover {
-  transform: scale(1.05);
+  filter: brightness(1.02);
+}
+
+/* Trạng thái đang kéo */
+.scrap-item.cursor-grabbing {
+  cursor: grabbing;
+  opacity: 0.92;
+  filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.25));
+  z-index: 9999 !important;
+}
+
+/* Trạng thái đang chọn — ring do Tailwind xử lý */
+.scrap-item.selected {
+  outline: 3px solid #00ffcc;
+  outline-offset: 4px;
 }
 
 /* --- Sticker vinyl effect --- */
